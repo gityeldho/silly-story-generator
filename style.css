@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  margin: 2em;
+  background-color: cyan; /* page bg color */
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: red; /* button bg color */
+  color: white; /* button text color */
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: darkred;
+}
+
+.stories {
+  margin-top: 8px; /* small space below button */
+  font-weight: bold;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  min-height: 50px;
+  max-width: 500px;
+}
