@@ -7,11 +7,11 @@ const storiesStart = [
 ];
 
 const storiesMiddle = [
-  "a brave knight",
-  "a curious cat",
-  "a clever fox",
-  "a tiny mouse",
-  "a friendly giant"
+  "a brave knight named NAME",
+  "a curious cat named NAME",
+  "a clever fox named NAME",
+  "a tiny mouse called NAME",
+  "a friendly giant known as NAME"
 ];
 
 const storiesEnd = [
@@ -24,24 +24,21 @@ const storiesEnd = [
 
 const storiesContainer = document.querySelector('.stories');
 const generateBtn = document.getElementById('generateBtn');
+const userNameInput = document.getElementById('userName');
 
 function randomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function generateStory() {
-  return `${randomItem(storiesStart)} ${randomItem(storiesMiddle)} ${randomItem(storiesEnd)}`;
+  let name = userNameInput.value.trim();
+  if (name === "") name = "someone";
+
+  const middle = randomItem(storiesMiddle).replace('NAME', name);
+  return `${randomItem(storiesStart)} ${middle} ${randomItem(storiesEnd)}`;
 }
 
-function generateStories(count = 1) {
-  storiesContainer.innerHTML = ''; // Clear previous stories
-  for (let i = 0; i < count; i++) {
-    const story = generateStory();
-    const p = document.createElement('p');
-    p.classList.add('story');
-    p.textContent = story;
-    storiesContainer.appendChild(p);
-  }
-}
-
-generateBtn.addEventListener('click', () => generateStories(1));
+generateBtn.addEventListener('click', () => {
+  const story = generateStory();
+  storiesContainer.innerHTML = `<p class="story">${story}</p>`;
+});
